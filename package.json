@@ -6,9 +6,11 @@
     "install:all": "npm run install-backend && npm run install-frontend",
     "install-backend": "npm --prefix backend install",
     "install-frontend": "npm --prefix frontend install",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev": "concurrently --kill-others-on-fail \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "npm --prefix backend run dev",
     "dev:frontend": "npm --prefix frontend run dev",
+    "kill:ports": "npx kill-port 5000 3000",
+    "predev": "npx kill-port 5000 3000 --silent || echo done",
     "build": "npm --prefix backend run build && npm --prefix frontend run build",
     "start": "npm --prefix backend run start"
   },
