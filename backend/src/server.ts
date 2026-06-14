@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import { createServer } from 'http';
@@ -62,9 +63,33 @@ wss.on('connection', (ws: WebSocket) => {
   });
 });
 
-server.listen(config.port, () => {
+const PORT = Number(process.env.PORT) || 5000;
+
+server.listen(PORT, () => {
   console.log(`=======================================================`);
-  console.log(` SENTINEL SWARM AI SECURITY ENGINE RUNNING ON PORT ${config.port}`);
+  console.log(` [Sentinel] Backend WebSocket server running on port ${PORT}`);
   console.log(` Zero Trust Mode: ACTIVE | Database Engine: SQLite(Mock)`);
   console.log(`=======================================================`);
+});
+
+server.on('error', (err: NodeJS.ErrnoException) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`[Sentinel] Port ${PORT} is already in use.`);
+    console.error(`[Sentinel] Run: npx kill-port ${PORT} — then restart.`);
+    process.exit(1);
+  } else {
+    throw err;
+  }
+});
+
+process.on('SIGINT', () => {
+  console.log('\n[Sentinel] Shutting down gracefully...');
+  server.close(() => {
+    console.log('[Sentinel] Server closed. Port released.');
+    process.exit(0);
+  });
+});
+
+process.on('SIGTERM', () => {
+  server.close(() => process.exit(0));
 });

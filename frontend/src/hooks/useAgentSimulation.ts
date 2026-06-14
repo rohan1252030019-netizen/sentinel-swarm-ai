@@ -1,0 +1,1 @@
+export { useAgentSimulation } from '../data/mockData';
