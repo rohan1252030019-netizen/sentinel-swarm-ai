@@ -1,71 +1,76 @@
 :root {
-  /* Color Tokens */
-  --bg-base: #060708;
-  --bg-surface: #0d0e11;
-  --bg-acrylic: rgba(14, 16, 20, 0.55);
-  --bg-acrylic-hover: rgba(22, 25, 31, 0.65);
-  --bg-dock: rgba(18, 20, 24, 0.65);
+  /* Void backgrounds */
+  --void-0: #020408;
+  --void-1: #060c14;
+  --void-2: #0a1628;
 
-  --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-focus: #0078d4;
+  /* Glass surfaces */
+  --glass-primary: rgba(8, 20, 44, 0.8);
+  --glass-secondary: rgba(4, 14, 30, 0.9);
+  --glass-elevated: rgba(12, 28, 58, 0.75);
 
-  --color-text-primary: #f5f6f8;
-  --color-text-secondary: #8e95a2;
-  --color-text-muted: #4e535f;
+  /* Specular borders (top inner white highlight = VisionOS window effect) */
+  --border-specular: 0.5px solid rgba(255, 255, 255, 0.12);
+  --border-glow: 0.5px solid rgba(0, 200, 255, 0.3);
+  --border-threat: 0.5px solid rgba(255, 60, 60, 0.35);
 
-  /* Accent Colors */
-  --accent-primary: #0078d4;
-  --accent-glow: rgba(0, 120, 212, 0.12);
-  --accent-success: #30d158;
-  --accent-warning: #ff9f0a;
-  --accent-error: #ff453a;
-  --accent-info: #64d2ff;
-  --accent-cyan: #00e5ff;
+  /* Glass blur */
+  --blur-glass: blur(40px) saturate(210%);
 
-  /* Severity */
-  --badge-low: #30b0c7;
-  --badge-medium: #ff9f0a;
-  --badge-high: #ff453a;
-  --badge-critical: #bf5af2;
-
-  /* Typography */
-  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-mono: 'Fira Code', 'Cascadia Code', 'SF Mono', monospace;
-
-  /* Shadows (reduced for performance) */
-  --shadow-elevation-8: 0 8px 24px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-  --shadow-elevation-16: 0 12px 36px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-  --shadow-elevation-64: 0 24px 64px 0 rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
-
-  /* Spacing Scale */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 48px;
-  --space-3xl: 64px;
+  /* Type colors */
+  --text-primary: #e8f4ff;
+  --text-secondary: rgba(180, 210, 255, 0.6);
+  --text-accent: #00c8ff;
+  --text-threat: #ff6060;
+  --text-safe: #44e880;
+  --text-gold: #f0a500;
+  --text-purple: #9f8dff;
+  --text-amber: #ffbf4d;
 
   /* Radius */
-  --radius-sm: 6px;
+  --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-lg: 18px;
   --radius-xl: 24px;
 
-  /* Transitions */
-  --transition-fast: 0.15s cubic-bezier(0.25, 1, 0.5, 1);
-  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-family-sans: -apple-system, 'SF Pro Display', 'Inter', sans-serif;
+  --font-family-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  --shadow-panel: 0 18px 42px rgba(0, 0, 0, 0.45);
+  --shadow-panel-strong: 0 30px 80px rgba(0, 0, 0, 0.68);
+  --shadow-glow-cyan: 0 0 24px rgba(0, 200, 255, 0.22);
+  --shadow-glow-red: 0 0 24px rgba(255, 60, 60, 0.22);
+  --shadow-glow-green: 0 0 24px rgba(68, 232, 128, 0.22);
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 520ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --glass-border-top: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 1px 0 0 rgba(255, 255, 255, 0.06);
 }
 
-/* Persona Themes */
-.theme-ceo { --accent-primary: #ff9f0a; --accent-glow: rgba(255, 159, 10, 0.15); --accent-info: #ff9f0a; --border-focus: #ff9f0a; }
-.theme-ciso { --accent-primary: #e2e8f0; --accent-glow: rgba(226, 232, 240, 0.15); --accent-info: #94a3b8; --border-focus: #cbd5e1; }
-.theme-operations { --accent-primary: #30d158; --accent-glow: rgba(48, 209, 88, 0.15); --accent-info: #00e5ff; --border-focus: #30d158; }
-.theme-investor { --accent-primary: #bf5af2; --accent-glow: rgba(191, 90, 242, 0.15); --accent-info: #ff79c6; --border-focus: #bf5af2; }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: var(--radius-sm); }
-::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
